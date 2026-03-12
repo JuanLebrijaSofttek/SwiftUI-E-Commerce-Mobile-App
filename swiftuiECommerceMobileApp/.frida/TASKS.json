@@ -1,0 +1,454 @@
+[
+  {
+    "agent" : "Tech Lead",
+    "build_strategy" : "full",
+    "dependencies" : [
+
+    ],
+    "description" : "Set up the base project architecture following the Constitution. Create folder structure: Sources\/Core\/Constants, Sources\/Core\/Extensions, Sources\/Features. Implement Color extension with a hex initializer to handle primary (#000000), background (#F9F9F9), and white (#FFFFFF) colors. Create AppConstants enum for layout spacing (8pt grid) and typography sizes.",
+    "files_created" : [
+      "Sources\/Core\/Extensions\/Color+Hex.swift",
+      "Sources\/Core\/Constants\/AppConstants.swift",
+      "Sources\/Core\/Constants\/Theme.swift"
+    ],
+    "id" : 1,
+    "model" : "claude-sonnet",
+    "phase" : "setup",
+    "qa_config" : {
+      "checks" : [
+
+      ],
+      "enabled" : false,
+      "model" : ""
+    },
+    "status" : "pending",
+    "title" : "Initialize Project Structure and Extensions"
+  },
+  {
+    "agent" : "Senior Dev",
+    "build_strategy" : "syntax_only",
+    "dependencies" : [
+      1
+    ],
+    "description" : "Main task for defining the application's data layer. This includes products, categories, users, carts, and orders as specified in the Key Entities section.",
+    "files_created" : [
+      "Sources\/Features\/Models\/"
+    ],
+    "id" : 2,
+    "model" : "claude-sonnet",
+    "phase" : "models",
+    "qa_config" : {
+      "checks" : [
+
+      ],
+      "enabled" : false,
+      "model" : ""
+    },
+    "status" : "pending",
+    "title" : "Define Data Models Phase"
+  },
+  {
+    "agent" : "Junior Dev",
+    "build_strategy" : "syntax_only",
+    "dependencies" : [
+      2
+    ],
+    "description" : "Create Swift structs for core entities. Product: UUID, name, description, price, imageURL, category, and rating. Category: UUID, name, and icon name. User: ID, name, email, and savedAddresses. CartItem: Product and quantity. Order: ID, date, [CartItem], total, and status enum. All models must be Codable. Use PascalCase for names and camelCase for properties. No force unwraps.",
+    "files_created" : [
+      "Sources\/Features\/Models\/Product.swift",
+      "Sources\/Features\/Models\/Category.swift",
+      "Sources\/Features\/Models\/User.swift",
+      "Sources\/Features\/Models\/Order.swift",
+      "Sources\/Features\/Models\/CartItem.swift"
+    ],
+    "id" : 201,
+    "model" : "claude-sonnet",
+    "phase" : "models",
+    "qa_config" : {
+      "checks" : [
+
+      ],
+      "enabled" : false,
+      "model" : ""
+    },
+    "status" : "pending",
+    "title" : "Implement Domain Models"
+  },
+  {
+    "agent" : "Senior Dev",
+    "build_strategy" : "syntax_only",
+    "dependencies" : [
+      201
+    ],
+    "description" : "Main task for creating services that handle data fetching, persistence, and security logic using async\/await and safe error handling.",
+    "files_created" : [
+      "Sources\/Features\/Services\/"
+    ],
+    "id" : 3,
+    "model" : "claude-sonnet",
+    "phase" : "services",
+    "qa_config" : {
+      "checks" : [
+
+      ],
+      "enabled" : false,
+      "model" : ""
+    },
+    "status" : "pending",
+    "title" : "Implement Mock Services Phase"
+  },
+  {
+    "agent" : "Senior Dev",
+    "build_strategy" : "syntax_only",
+    "dependencies" : [
+      3
+    ],
+    "description" : "Implement ProductService to fetch mock products using async\/await and do-catch blocks. Implement PersistenceService using SwiftData or UserDefaults for cart\/favorites. Implement SecurityService for Keychain management of user tokens using SHA-256 hashing. Ensure all services handle errors gracefully without force unwraps.",
+    "files_created" : [
+      "Sources\/Features\/Services\/ProductService.swift",
+      "Sources\/Features\/Services\/PersistenceService.swift",
+      "Sources\/Features\/Services\/SecurityService.swift"
+    ],
+    "id" : 301,
+    "model" : "claude-sonnet",
+    "phase" : "services",
+    "qa_config" : {
+      "checks" : [
+
+      ],
+      "enabled" : false,
+      "model" : ""
+    },
+    "status" : "pending",
+    "title" : "Implement Data and Security Services"
+  },
+  {
+    "agent" : "Junior Dev",
+    "build_strategy" : "full",
+    "dependencies" : [
+      1
+    ],
+    "description" : "Main task for creating atomic, single-responsibility UI units for use across all screens. Focus on adaptive layouts and centralized styling.",
+    "files_created" : [
+      "Sources\/Features\/Components\/"
+    ],
+    "id" : 4,
+    "model" : "claude-sonnet",
+    "phase" : "components",
+    "qa_config" : {
+      "checks" : [
+
+      ],
+      "enabled" : false,
+      "model" : ""
+    },
+    "status" : "pending",
+    "title" : "Build Reusable UI Components Phase"
+  },
+  {
+    "agent" : "Junior Dev",
+    "build_strategy" : "full",
+    "dependencies" : [
+      4
+    ],
+    "description" : "Create primary UI components. StyledButton: Full-width, rounded (12pt), supports primary (black bg) and secondary (outline) styles. ProductCard: Shadow (radius 4, y 2), rounded corners (12pt), image-dominant with price and rating labels. CategoryChip: Horizontal scrolling pill with icon and text. CustomTextField: Floating label pattern with error state underline. Apply modifier order: Layout -> Style -> Behavior.",
+    "files_created" : [
+      "Sources\/Features\/Components\/StyledButton.swift",
+      "Sources\/Features\/Components\/ProductCard.swift",
+      "Sources\/Features\/Components\/CategoryChip.swift",
+      "Sources\/Features\/Components\/CustomTextField.swift"
+    ],
+    "id" : 401,
+    "model" : "claude-sonnet",
+    "phase" : "components",
+    "qa_config" : {
+      "checks" : [
+
+      ],
+      "enabled" : false,
+      "model" : ""
+    },
+    "status" : "pending",
+    "title" : "Implement Atomic Components"
+  },
+  {
+    "agent" : "Senior Dev",
+    "build_strategy" : "full",
+    "dependencies" : [
+      301
+    ],
+    "description" : "Main task for implementing @Observable classes to manage business logic and state for all features, adhering to the MVVM pattern.",
+    "files_created" : [
+      "Sources\/Features\/ViewModels\/"
+    ],
+    "id" : 5,
+    "model" : "claude-sonnet",
+    "phase" : "viewmodels",
+    "qa_config" : {
+      "checks" : [
+
+      ],
+      "enabled" : false,
+      "model" : ""
+    },
+    "status" : "pending",
+    "title" : "Create Application ViewModels Phase"
+  },
+  {
+    "agent" : "Senior Dev",
+    "build_strategy" : "full",
+    "dependencies" : [
+      5
+    ],
+    "description" : "Create @Observable classes marked with @MainActor. StoreViewModel: Handles catalog loading, search filtering (O(n) with first(where:)), and category selection. CartManager: Shared dependency using @Environment to manage cart items, quantity updates, and reactive total calculation. AuthViewModel: Manages user session and Keychain interaction. NavigationRouter: State-driven routing using a NavigationPath with enum-based destinations.",
+    "files_created" : [
+      "Sources\/Features\/ViewModels\/StoreViewModel.swift",
+      "Sources\/Features\/ViewModels\/CartManager.swift",
+      "Sources\/Features\/ViewModels\/AuthViewModel.swift",
+      "Sources\/Features\/ViewModels\/NavigationRouter.swift"
+    ],
+    "id" : 501,
+    "model" : "claude-sonnet",
+    "phase" : "viewmodels",
+    "qa_config" : {
+      "checks" : [
+
+      ],
+      "enabled" : false,
+      "model" : ""
+    },
+    "status" : "pending",
+    "title" : "Implement Feature ViewModels"
+  },
+  {
+    "agent" : "Junior Dev",
+    "build_strategy" : "full",
+    "dependencies" : [
+      401,
+      501
+    ],
+    "description" : "Main task for building screens with no forward navigation, such as success confirmations and static history lists.",
+    "files_created" : [
+      "Sources\/Features\/Screens\/Leaf\/"
+    ],
+    "id" : 6,
+    "model" : "claude-sonnet",
+    "phase" : "screens_leaf",
+    "qa_config" : {
+      "checks" : [
+
+      ],
+      "enabled" : false,
+      "model" : ""
+    },
+    "status" : "pending",
+    "title" : "Create Leaf Screens Phase"
+  },
+  {
+    "agent" : "Junior Dev",
+    "build_strategy" : "full",
+    "dependencies" : [
+      6
+    ],
+    "description" : "Create SuccessfullyView: Order confirmation with valid Order ID, success icon, and 'Back to Home' button. OrderHistoryView: Vertical list of past transactions showing date and total. WishlistView: Grid of favorited ProductCards. ProfileView: Static list of account options (Address Book, Payment Methods, Settings). All views must use @Environment for shared state.",
+    "files_created" : [
+      "Sources\/Features\/Screens\/Leaf\/SuccessfullyView.swift",
+      "Sources\/Features\/Screens\/Leaf\/OrderHistoryView.swift",
+      "Sources\/Features\/Screens\/Leaf\/WishlistView.swift",
+      "Sources\/Features\/Screens\/Leaf\/ProfileView.swift"
+    ],
+    "id" : 601,
+    "model" : "claude-sonnet",
+    "phase" : "screens_leaf",
+    "qa_config" : {
+      "checks" : [
+
+      ],
+      "enabled" : false,
+      "model" : ""
+    },
+    "status" : "pending",
+    "title" : "Implement Leaf Screens"
+  },
+  {
+    "agent" : "Junior Dev",
+    "build_strategy" : "full",
+    "dependencies" : [
+      601
+    ],
+    "description" : "Main task for building screens that facilitate navigation to leaf screens, including the cart flow and product discovery lists.",
+    "files_created" : [
+      "Sources\/Features\/Screens\/Intermediate\/"
+    ],
+    "id" : 7,
+    "model" : "claude-sonnet",
+    "phase" : "screens_intermediate",
+    "qa_config" : {
+      "checks" : [
+
+      ],
+      "enabled" : false,
+      "model" : ""
+    },
+    "status" : "pending",
+    "title" : "Create Intermediate Screens Phase"
+  },
+  {
+    "agent" : "Junior Dev",
+    "build_strategy" : "full",
+    "dependencies" : [
+      7
+    ],
+    "description" : "Create CartView (Place Order): Modal summary of items with quantity controls and 'Checkout' button leading to ShippingView. ShippingView: Address entry and payment selection (mock) leading to SuccessfullyView. ProductCatalogView: Scrollable grid of ProductCards with search bar. ShopDetailPage: Detailed product view with images, description, and 'Add to Bag' button (opens Cart modal). Use state-driven navigationDestinations.",
+    "files_created" : [
+      "Sources\/Features\/Screens\/Intermediate\/CartView.swift",
+      "Sources\/Features\/Screens\/Intermediate\/ShippingView.swift",
+      "Sources\/Features\/Screens\/Intermediate\/ProductCatalogView.swift",
+      "Sources\/Features\/Screens\/Intermediate\/ShopDetailPage.swift"
+    ],
+    "id" : 701,
+    "model" : "claude-sonnet",
+    "phase" : "screens_intermediate",
+    "qa_config" : {
+      "checks" : [
+
+      ],
+      "enabled" : false,
+      "model" : ""
+    },
+    "status" : "pending",
+    "title" : "Implement Purchase and Catalog Views"
+  },
+  {
+    "agent" : "Junior Dev",
+    "build_strategy" : "full",
+    "dependencies" : [
+      701
+    ],
+    "description" : "Main task for building entry-point screens that launch the primary navigation stacks and onboarding flows.",
+    "files_created" : [
+      "Sources\/Features\/Screens\/Root\/"
+    ],
+    "id" : 8,
+    "model" : "claude-sonnet",
+    "phase" : "screens_root",
+    "qa_config" : {
+      "checks" : [
+
+      ],
+      "enabled" : false,
+      "model" : ""
+    },
+    "status" : "pending",
+    "title" : "Create Root Screens Phase"
+  },
+  {
+    "agent" : "Junior Dev",
+    "build_strategy" : "full",
+    "dependencies" : [
+      8
+    ],
+    "description" : "Create HomeView: Main discovery screen with promotional banners, horizontal category chips, and 'View All' links to catalog. OnboardingView: Three-step carousel with feature highlights and 'Get Started' button. SignInView\/SignUpView: Branded authentication forms using AuthViewModel and CustomTextFields. SearchView: Dedicated search interface with trending keywords. Use explicit animations for transitions.",
+    "files_created" : [
+      "Sources\/Features\/Screens\/Root\/HomeView.swift",
+      "Sources\/Features\/Screens\/Root\/OnboardingView.swift",
+      "Sources\/Features\/Screens\/Root\/SignInView.swift",
+      "Sources\/Features\/Screens\/Root\/SignUpView.swift",
+      "Sources\/Features\/Screens\/Root\/SearchView.swift"
+    ],
+    "id" : 801,
+    "model" : "claude-sonnet",
+    "phase" : "screens_root",
+    "qa_config" : {
+      "checks" : [
+
+      ],
+      "enabled" : false,
+      "model" : ""
+    },
+    "status" : "pending",
+    "title" : "Implement Discovery and Auth Views"
+  },
+  {
+    "agent" : "Tech Lead",
+    "build_strategy" : "full",
+    "dependencies" : [
+      801
+    ],
+    "description" : "Create the main entry point (App and ContentView). Implement MainTabView with four tabs: Home, Wishlist, Search, and Profile. Wrap Home tab in a NavigationStack using NavigationRouter for state-driven navigationDestinations. Inject CartManager, AuthViewModel, and NavigationRouter as EnvironmentObjects. Set up Splash Screen timer (2s) leading to Onboarding or Home based on auth state.",
+    "files_created" : [
+      "Sources\/App\/StylishApp.swift",
+      "Sources\/App\/ContentView.swift",
+      "Sources\/App\/MainTabView.swift"
+    ],
+    "id" : 9,
+    "model" : "claude-sonnet",
+    "phase" : "navigation",
+    "qa_config" : {
+      "checks" : [
+        "Verify app compiles without errors",
+        "Confirm NavigationStack correctly handles state-driven routes",
+        "Check that Environment objects are properly injected",
+        "No force unwraps found in navigation logic",
+        "Syntax validation passed"
+      ],
+      "enabled" : true,
+      "model" : "claude-sonnet"
+    },
+    "status" : "pending",
+    "title" : "Implement App Entry and Main Navigation"
+  },
+  {
+    "agent" : "Senior Dev",
+    "build_strategy" : "full",
+    "dependencies" : [
+      9
+    ],
+    "description" : "Perform comprehensive verification of the app flow from Discovery to Purchase. Verify all views instantiate correctly without crashes. Check for any remaining placeholder code or 'TODO' comments and remove them. Validate that all UI components adhere to the centralized Theme and AppConstants. Test edge cases like empty search results and zero-value cart states.",
+    "files_created" : [
+
+    ],
+    "id" : 10,
+    "model" : "claude-sonnet",
+    "phase" : "debug",
+    "qa_config" : {
+      "checks" : [
+        "App compiles without errors",
+        "All views instantiate correctly",
+        "No placeholder code remaining",
+        "Naming conventions followed",
+        "Zero force-unwraps verified across project"
+      ],
+      "enabled" : true,
+      "model" : "claude-sonnet"
+    },
+    "status" : "pending",
+    "title" : "App Verification and Debugging"
+  },
+  {
+    "agent" : "Senior Dev",
+    "build_strategy" : "full",
+    "dependencies" : [
+      10
+    ],
+    "description" : "Final verification of the production-ready build. Perform accessibility audit using Accessibility Labels for all primary UI elements. Verify that the app maintains high-efficiency data handling (60 FPS scrolling target). Ensure all security standards (Keychain for tokens, SHA-256) are correctly implemented and no hardcoded keys exist.",
+    "files_created" : [
+
+    ],
+    "id" : 11,
+    "model" : "claude-sonnet",
+    "phase" : "release",
+    "qa_config" : {
+      "checks" : [
+        "App compiles without errors in Release configuration",
+        "Accessibility labels are present for main interactive elements",
+        "Security standards for sensitive data handling are met",
+        "Code quality metrics (complexity, file length) are satisfied"
+      ],
+      "enabled" : true,
+      "model" : "claude-sonnet"
+    },
+    "status" : "pending",
+    "title" : "Final Build and Performance Check"
+  }
+]
